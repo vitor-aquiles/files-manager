@@ -1,5 +1,7 @@
 package com.aquiles.filesmanager.controller;
 
+import com.aquiles.filesmanager.config.RabbitMQFactory;
+import com.aquiles.filesmanager.config.RabbitMQSender;
 import com.aquiles.filesmanager.service.CSVService;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +18,13 @@ public class CSVController {
     @Autowired
     private CSVService csvService;
 
+    @Autowired
+    private RabbitMQSender rabbitMQSender;
+
     @PostMapping(value = "/convert")
     public ObjectNode csvFile(@RequestParam("file") MultipartFile file, @RequestParam("header") boolean hasHeader){
-        return csvService.csvToJson(file, hasHeader);
+        ObjectNode obj = csvService.csvToJson(file, hasHeader);
+        rabbitMQSender.send(obj.toString());
+        return obj;
     }
 }

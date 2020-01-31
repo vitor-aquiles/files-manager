@@ -2,10 +2,11 @@ package com.aquiles.filesmanager.config;
 
 import com.rabbitmq.client.Channel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
-
+@Service
 public class RabbitMQSender {
     private final static String QUEUE_NAME = "hello";
 
