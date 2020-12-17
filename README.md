@@ -1,6 +1,6 @@
 # Files Manager
-API Rest que recebe arquivos no formato CSV e realização a conversão para o formato JSON.
-Por fim, posta este JSON em uma fila para que o mesmo seja consumido por outra aplicação.
+API Rest que recebe arquivos no formato CSV e os converte para o formato JSON. 
+Por fim, posta este JSON em uma fila para que o mesmo seja consumido por outra aplicação
 
 ### Detalhes da API
 * Projeto criado em Java com Spring Boot
