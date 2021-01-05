@@ -51,7 +51,6 @@ public class CSVService {
             }
             root.set("data", data);
             System.out.println(root);
-            //csv.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

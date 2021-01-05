@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 @Service
 public class RabbitMQSender {
-    private final static String QUEUE_NAME = "hello";
+    private final static String QUEUE_NAME = "json";
 
     @Autowired
     private RabbitMQFactory factory;

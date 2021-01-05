@@ -3,6 +3,7 @@ package com.aquiles.filesmanager.config;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -11,9 +12,12 @@ import java.util.concurrent.TimeoutException;
 @Service
 public class RabbitMQFactory {
 
+
     public Channel getConnection() throws Exception {
         ConnectionFactory factory = new ConnectionFactory();
-        factory.setHost("localhost");
+        factory.setHost("rabbitmq");
+        factory.setPort(5672);
+        factory.setVirtualHost("/");
         factory.setUsername("guest");
         factory.setPassword("guest");
         try {

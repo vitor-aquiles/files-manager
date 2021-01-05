@@ -1,0 +1,22 @@
+version: '3'
+services: 
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq-files-manager
+    ports:
+    - 15672:15672
+    - 5672:5672
+  main-app:
+    image: files-manager
+    container_name: app-files-manager
+    ports:
+    - 8080:8080
+    links:
+    - rabbitmq
+  consumer-app:
+    image: json-consumer
+    container_name: app-json-consumer
+    ports:
+    - 8081:8081
+    links:
+    - rabbitmq
